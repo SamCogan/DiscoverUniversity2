@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+        </title>
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+        <link rel="stylesheet" href="my.css" />
+        <style>
+            /* App custom styles */
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile-1.1.1.min.js">
+        </script>
+        <script src="my.js">
+        </script>
+    </head>
+    <body>
+        <!-- Home -->
+        <div data-role="page" data-theme="e" id="page1">
+            <div data-theme="e" data-role="header">
+                <h3>
+                    WikiBeach
+                </h3>
+            </div>
+            <div data-role="content">
+                <a href="#page1">
+                    <div style="">
+                        <img style="width: 288px; height: px" src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xpa1/t1.0-9/q71/s720x720/10426597_617128151734421_1900362503727929234_n.jpg" />
+                    </div>
+                </a>
+                <a data-role="button" data-theme="b" href="#page2">
+                    Beach Selection
+                </a>
+                <a data-role="button" data-theme="b" href="#page1">
+                    Preferences
+                </a>
+                <a data-role="button" data-theme="b" href="#page4">
+                    Where are you?
+                </a>
+                <a data-role="button" data-theme="b" href="#page6">
+                    About
+                </a>
+                <a data-role="button" data-theme="b" href="#page5">
+                    Social networks
+                </a>
+            </div>
+        </div>
+        <!-- Beach Selection -->
+        <div data-role="page" id="page2">
+            <div data-theme="e" data-role="header">
+                <h3>
+                    Beach Slection
+                </h3>
+                <a data-role="button" href="#page1" class="ui-btn-left">
+                    Home
+                </a>
+            </div>
+            <div data-role="content">
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput1">
+                            Bull island
+                        </label>
+                        <input name="" id="textinput1" placeholder="" value="Perfect for a good time with the family." type="text" />
+                    </fieldset>
+                </div>
+                <a data-role="button" href="#page8">
+                    Additional Information
+                </a>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput3">
+                            Bettystown
+                        </label>
+                        <input name="" id="textinput3" placeholder="" value="Great weather, with temperatures of 30C^" type="text" />
+                    </fieldset>
+                </div>
+                <a data-role="button" href="#page9">
+                    Additional Information
+                </a>
+            </div>
+        </div>
+        <!-- Where are you -->
+        <div data-role="page" id="page4">
+            <div data-theme="e" data-role="header">
+                <a data-role="button" href="#page1" class="ui-btn-left">
+                    Home
+                </a>
+                <h3>
+                    Where Are you?
+                </h3>
+            </div>
+            <div data-role="content">
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center=Ifsc&amp;zoom=14&amp;size=288x200&amp;markers=national college ireland&amp;sensor=false" width="288" height="200" />
+            </div>
+        </div>
+        <!-- Social Networks -->
+        <div data-role="page" id="page5">
+            <div data-theme="e" data-role="header">
+                <h3>
+                    Social Networks
+                </h3>
+                <a data-role="button" href="#page1" class="ui-btn-left">
+                    Home
+                </a>
+            </div>
+            <div data-role="content">
+                <a data-role="button" href="https://www.facebook.com/WikiBeach?fref=ts">
+                    Facebook
+                </a>
+                <a data-role="button" href="#page5">
+                    Twitter
+                </a>
+                <a data-role="button" href="#page5">
+                    Youtube
+                </a>
+                <a data-role="button" href="#page5">
+                    Website
+                </a>
+            </div>
+        </div>
+        <!-- About -->
+        <div data-role="page" id="page6">
+            <div data-theme="e" data-role="header">
+                <h3>
+                    About
+                </h3>
+                <a data-role="button" href="#page1" class="ui-btn-left">
+                    Home
+                </a>
+            </div>
+            <div data-role="content">
+                <div>
+                    <h2 style="text-align: center;">
+                        <span style="font-family: 'comic sans ms', sans-serif;">
+                            <strong>
+                                Prepare to be washed ashore by our unique holiday application. This app
+                                allows you to access information on a variety of beaches on your location.
+                            </strong>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <!-- AI -->
+        <div data-role="page" id="page8">
+            <div data-theme="e" data-role="header">
+                <h3>
+                    Bull Island
+                </h3>
+                <a data-role="button" href="#page1" class="ui-btn-left">
+                    Home
+                </a>
+            </div>
+            <div data-role="content">
+                <div style="">
+                    <img style="width: 288px; height: 250px" src="http://media-cdn.tripadvisor.com/media/photo-s/01/78/20/04/north-bull-island.jpg" />
+                </div>
+                <div>
+                    <p>
+                        Location: Dublin
+                    </p>
+                    <p>
+                        Distance: 8 km
+                    </p>
+                    <p>
+                        Temperature: 23C'
+                    </p>
+                    <p>
+                        Services: Golf &nbsp;Course,Lifeguard
+                    </p>
+                </div>
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center=Bull Island dublin&amp;zoom=&amp;size=288x200&amp;markers=Bull island dublin&amp;sensor=false" width="288" height="200" />
+            </div>
+        </div>
+        <!-- Ai2 -->
+        <div data-role="page" id="page9">
+            <div data-theme="e" data-role="header">
+                <h5>
+                    Portmarnock
+                </h5>
+                <a data-role="button" href="#page1" class="ui-btn-left">
+                    Home
+                </a>
+            </div>
+            <div data-role="content">
+                <div style="width: 288px; height: 100px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;">
+                    <img src="http://codiqa.com/static/images/v2/image.png" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px" />
+                </div>
+                <div>
+                    <p>
+                        <b>
+                            Location: Portmarnock
+                        </b>
+                    </p>
+                    <p>
+                        <b>
+                            Distance: 18 Km
+                        </b>
+                    </p>
+                    <p>
+                        <b>
+                            Temperature: 23 C'
+                        </b>
+                    </p>
+                    <p>
+                        <b>
+                            Services: Hotel, B&amp;B, Restaurant, Lifeguard.
+                        </b>
+                    </p>
+                    <p>
+                        <b>
+                            <br />
+                        </b>
+                    </p>
+                </div>
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center=Portmarnock&amp;zoom=14&amp;size=288x200&amp;markers=Portmarnock&amp;sensor=false" width="288" height="200" />
+            </div>
+        </div>
+        <script>
+            //App custom javascript
+        </script>
+    </body>
+</html>
