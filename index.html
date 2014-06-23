@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>
         </title>
+		<link href="owl.carousel.css" rel="stylesheet">
+		<link href="owl.theme.css" rel="stylesheet">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
         <link rel="stylesheet" href="my.css" />
         <style>
@@ -220,8 +222,139 @@
                 <img src="https://maps.googleapis.com/maps/api/staticmap?center=Portmarnock&amp;zoom=14&amp;size=288x200&amp;markers=Portmarnock&amp;sensor=false" width="288" height="200" />
             </div>
         </div>
-        <script>
-            //App custom javascript
-        </script>
+		<div data-role="page" id="page10">
+            <div data-theme="e" data-role="header">
+                <h5>
+                    Portmarnock
+                </h5>
+                <a data-role="button" href="#page1" class="ui-btn-left">
+                    Home
+                </a>
+            </div>
+            <div data-role="content">
+                <div id="demo">
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <h1>Demo</h1>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="span12">
+
+              <div id="owl-example" class="owl-carousel">
+
+                <div class="item darkCyan">
+                  <img src="assets/img/demo-slides/touch.png" alt="Touch">
+                    <h3>Touch</h3>
+                    <h4>Can touch this</h4>
+                </div>
+                <div class="item forestGreen">
+                  <img src="assets/img/demo-slides/grab.png" alt="Grab">
+                    <h3>Grab</h3>
+                    <h4>Can grab this</h4>
+                </div>
+                <div class="item orange">
+                  <img src="assets/img/demo-slides/responsive.png" alt="Responsive">
+                    <h3>Responsive</h3>
+                    <h4>Fully responsive!</h4>
+                </div>
+
+                <div class="item yellow">
+                  <img src="assets/img/demo-slides/css3.png" alt="CSS3">
+                    <h3>CSS3</h3>
+                    <h4>3D Acceleration.</h4>
+                </div>
+
+                <div class="item dodgerBlue">
+                  <img src="assets/img/demo-slides/multi.png" alt="Multi">
+                    <h3>Multiply</h3>
+                    <h4>Owls on page.</h4>
+                </div>
+
+                <div class="item skyBlue">
+                  <img src="assets/img/demo-slides/modern.png" alt="Modern Browsers">
+                    <h3>Modern</h3>
+                    <h4>Browsers Compatibility</h4>
+                </div>
+
+                <div class="item zombieGreen">
+                  <img src="assets/img/demo-slides/zombie.png" alt="Zombie Browsers - old ones">
+                    <h3>Zombie</h3>
+                    <h4>Browsers Compatibility</h4>
+                </div>
+
+                <div class="item violet">
+                  <img src="assets/img/demo-slides/controls.png" alt="Take Control">
+                    <h3>Take Control</h3>
+                    <h4>The way you like</h4>
+                </div>
+
+                <div class="item yellowLight">
+                  <img src="assets/img/demo-slides/feather.png" alt="Light">
+                    <h3>Light</h3>
+                    <h4>As a feather</h4>
+                </div>
+
+                <div class="item steelGray">
+                  <img src="assets/img/demo-slides/tons.png" alt="Tons of Opotions">
+                    <h3>Tons</h3>
+                    <h4>of options</h4>
+                </div>
+
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+                
+            </div>
+        </div>
+        <script src="owl.carousel.min.js"></script>
+		<script>
+
+    $(document).ready(function($) {
+      $("#owl-example").owlCarousel();
+    });
+
+
+    $("body").data("page", "frontpage");
+
+    </script>
+	<script type="text/javascript">
+    jQuery(function($){
+      var disqus_loaded = false;
+      var top = $("#faq").offset().top; 
+      var owldomain = window.location.hostname.indexOf("owlgraphic");
+      var comments = window.location.href.indexOf("comment");
+
+      if(owldomain !== -1){
+        function check(){
+          if ( (!disqus_loaded && $(window).scrollTop() + $(window).height() > top) || (comments !== -1) ){
+            $(window).off( "scroll" )
+            disqus_loaded = true;
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'owlcarousel'; // required: replace example with your forum shortname
+            var disqus_identifier = 'OWL Carousel';
+            //var disqus_url = 'http://owlgraphic.com/owlcarousel/';
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+          }
+        }
+        $(window).on( "scroll", check )
+        check();
+      } else {
+        $('.disqus').hide();
+      }
+    });
+    </script>
     </body>
 </html>
