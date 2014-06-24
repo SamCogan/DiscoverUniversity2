@@ -10,7 +10,11 @@
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
         <link rel="stylesheet" href="my.css" />
         <style>
-            /* App custom styles */
+            .owl-item
+			{
+			text-align:center;
+			}
+			#map-page, #map-canvas { width: 100%; height: 100%; padding: 0; }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
         </script>
@@ -18,9 +22,55 @@
         </script>
         <script src="my.js">
         </script>
+		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script>
+	/*
+	 * Google Maps documentation: http://code.google.com/apis/maps/documentation/javascript/basics.html
+	 * Geolocation documentation: http://dev.w3.org/geo/api/spec-source.html
+	 */
+
+	$( document ).on( "pageinit", "#map-page", function() {
+		var defaultLatLng = new google.maps.LatLng(53.348899,-6.246032);  // Default to Hollywood, CA when no geolocation support
+
+		if ( navigator.geolocation ) {
+			function success(pos) {
+				// Location found, show map with these coordinates
+				drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+			}
+
+			function fail(error) {
+				drawMap(defaultLatLng);  // Failed to find location, show default map
+			}
+
+			// Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
+			navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 500000, enableHighAccuracy:true, timeout: 6000});
+		} else {
+			drawMap(defaultLatLng);  // No geolocation support, show default map
+		}
+
+		function drawMap(latlng) {
+			var myOptions = {
+				zoom: 10,
+				center: latlng,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+
+			var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+
+			// Add an overlay to the map of current lat/lng
+			var marker = new google.maps.Marker({
+				position: latlng,
+				map: map,
+				title: "Greetings!"
+			});
+		}
+
+	});
+	</script>
     </head>
     <body>
         <!-- Home -->
+	
         <div data-role="page" data-theme="e" id="page1">
             <div data-theme="e" data-role="header">
                 <h3>
@@ -30,34 +80,41 @@
             <div data-role="content">
                 <a href="#page1">
                     <div style="">
-                        <img style="width: 288px; height: px" src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xpa1/t1.0-9/q71/s720x720/10426597_617128151734421_1900362503727929234_n.jpg" />
-                    </div>
-                </a>
+                       <center><img style="width: 288px; height: px" src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xpa1/t1.0-9/q71/s720x720/10426597_617128151734421_1900362503727929234_n.jpg" />
+					</center>
+				   </div>
+				</a>
+					<video src="vid.mp4" width="100%" controls>
+						<source src="vid.mp4" type="video/mp4">
+						<source src="vid.ogg" type="video/ogg">
+						Your browser does not support the video tag.
+					</video>
+                
                 <a data-role="button" data-theme="b" href="#page2">
                     Beach Selection
                 </a>
                 <a data-role="button" data-theme="b" href="#page1">
                     Preferences
                 </a>
-                <a data-role="button" data-theme="b" href="#page4">
+                <a data-role="button" data-theme="b" href="#map-page">
                     Where are you?
                 </a>
                 <a data-role="button" data-theme="b" href="#page6">
                     About
                 </a>
-				<a data-role="button" data-theme="b" href="#page10">
-                    slider
-                </a>
+				
                 <a data-role="button" data-theme="b" href="#page5">
                     Social networks
                 </a>
             </div>
         </div>
+		
+		
         <!-- Beach Selection -->
         <div data-role="page" id="page2">
             <div data-theme="e" data-role="header">
                 <h3>
-                    Beach Slection
+                    Beach Selection
                 </h3>
                 <a data-role="button" href="#page1" class="ui-btn-left">
                     Home
@@ -89,19 +146,18 @@
             </div>
         </div>
         <!-- Where are you -->
-        <div data-role="page" id="page4">
-            <div data-theme="e" data-role="header">
-                <a data-role="button" href="#page1" class="ui-btn-left">
+        	<div data-role="page" id="map-page">
+	<div data-role="header" data-theme="e">
+	<h1>Maps</h1>
+	<a data-role="button" href="#page1">
                     Home
                 </a>
-                <h3>
-                    Where Are you?
-                </h3>
-            </div>
-            <div data-role="content">
-                <img src="https://maps.googleapis.com/maps/api/staticmap?center=Ifsc&amp;zoom=14&amp;size=288x200&amp;markers=national college ireland&amp;sensor=false" width="288" height="200" />
-            </div>
-        </div>
+	</div>
+
+	<div role="main" class="ui-content" id="map-canvas">
+		<!-- map loads here... -->
+	</div>
+</div>
         <!-- Social Networks -->
         <div data-role="page" id="page5">
             <div data-theme="e" data-role="header">
@@ -161,6 +217,50 @@
                 </a>
             </div>
             <div data-role="content">
+			<div id="demo">
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <h1>Items</h1>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="span12">
+
+              <div id="owl-example" class="owl-carousel">
+
+                <div class="item darkCyan">
+                 <a href="#page1"><img src="1.png" alt="Touch">
+                    </a>
+                </div>
+                <div class="item forestGreen">
+                  <img src="2.jpg" alt="Grab">
+                    
+                </div>
+                <div class="item orange">
+                  <img src="3.jpg" alt="Responsive">
+                    
+                </div>
+
+                <div class="item yellow">
+                  <img src="4.jpg" alt="CSS3">
+                    
+                </div>
+
+                <div class="item dodgerBlue">
+                  <img src="5.jpg" alt="Multi">
+                    
+                </div>              
+
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
                 <div style="">
                     <img style="width: 288px; height: 250px" src="http://media-cdn.tripadvisor.com/media/photo-s/01/78/20/04/north-bull-island.jpg" />
                 </div>
@@ -192,9 +292,51 @@
                 </a>
             </div>
             <div data-role="content">
-                <div style="width: 288px; height: 100px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;">
-                    <img src="http://codiqa.com/static/images/v2/image.png" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px" />
+			<div id="demo">
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <h1>Items</h1>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="span12">
+
+              <div id="owl-example1" class="owl-carousel">
+
+                <div class="item darkCyan">
+                 <a href="#page1"><img src="1.png" alt="Touch">
+                    </a>
                 </div>
+                <div class="item forestGreen">
+                  <img src="2.jpg" alt="Grab">
+                    
+                </div>
+                <div class="item orange">
+                  <img src="3.jpg" alt="Responsive">
+                    
+                </div>
+
+                <div class="item yellow">
+                  <img src="4.jpg" alt="CSS3">
+                    
+                </div>
+
+                <div class="item dodgerBlue">
+                  <img src="5.jpg" alt="Multi">
+                    
+                </div>              
+
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+                
                 <div>
                     <p>
                         <b>
@@ -225,103 +367,12 @@
                 <img src="https://maps.googleapis.com/maps/api/staticmap?center=Portmarnock&amp;zoom=14&amp;size=288x200&amp;markers=Portmarnock&amp;sensor=false" width="288" height="200" />
             </div>
         </div>
-		<div data-role="page" id="page10">
-            <div data-theme="e" data-role="header">
-                <h5>
-                    Portmarnock
-                </h5>
-                <a data-role="button" href="#page1" class="ui-btn-left">
-                    Home
-                </a>
-            </div>
-            <div data-role="content">
-                <div id="demo">
-        <div class="container">
-          <div class="row">
-            <div class="span12">
-              <h1>Demo</h1>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="span12">
-
-              <div id="owl-example" class="owl-carousel">
-
-                <div class="item darkCyan">
-                  <img src="assets/img/demo-slides/touch.png" alt="Touch">
-                    <h3>Touch</h3>
-                    <h4>Can touch this</h4>
-                </div>
-                <div class="item forestGreen">
-                  <img src="assets/img/demo-slides/grab.png" alt="Grab">
-                    <h3>Grab</h3>
-                    <h4>Can grab this</h4>
-                </div>
-                <div class="item orange">
-                  <img src="assets/img/demo-slides/responsive.png" alt="Responsive">
-                    <h3>Responsive</h3>
-                    <h4>Fully responsive!</h4>
-                </div>
-
-                <div class="item yellow">
-                  <img src="assets/img/demo-slides/css3.png" alt="CSS3">
-                    <h3>CSS3</h3>
-                    <h4>3D Acceleration.</h4>
-                </div>
-
-                <div class="item dodgerBlue">
-                  <img src="assets/img/demo-slides/multi.png" alt="Multi">
-                    <h3>Multiply</h3>
-                    <h4>Owls on page.</h4>
-                </div>
-
-                <div class="item skyBlue">
-                  <img src="assets/img/demo-slides/modern.png" alt="Modern Browsers">
-                    <h3>Modern</h3>
-                    <h4>Browsers Compatibility</h4>
-                </div>
-
-                <div class="item zombieGreen">
-                  <img src="assets/img/demo-slides/zombie.png" alt="Zombie Browsers - old ones">
-                    <h3>Zombie</h3>
-                    <h4>Browsers Compatibility</h4>
-                </div>
-
-                <div class="item violet">
-                  <img src="assets/img/demo-slides/controls.png" alt="Take Control">
-                    <h3>Take Control</h3>
-                    <h4>The way you like</h4>
-                </div>
-
-                <div class="item yellowLight">
-                  <img src="assets/img/demo-slides/feather.png" alt="Light">
-                    <h3>Light</h3>
-                    <h4>As a feather</h4>
-                </div>
-
-                <div class="item steelGray">
-                  <img src="assets/img/demo-slides/tons.png" alt="Tons of Opotions">
-                    <h3>Tons</h3>
-                    <h4>of options</h4>
-                </div>
-
-              </div>
-
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-                
-            </div>
-        </div>
+		
         <script src="owl.carousel.min.js"></script>
 		<script>
 
     $(document).ready(function($) {
-      $("#owl-example").owlCarousel();
+      $("#owl-example,#owl-example1").owlCarousel();
     });
 
 
@@ -358,6 +409,9 @@
         $('.disqus').hide();
       }
     });
+	
+	
+
     </script>
     </body>
 </html>
